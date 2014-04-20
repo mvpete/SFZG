@@ -3,10 +3,11 @@
 TextFade::TextFade(Vector &pos, const std::string &str, float time)
 	:_time(time*1000.f)
 {
-	
-	_title = sf::Text(str, _font);
-	_title.setPosition(GetHorizontalCenter(_title).X,70.f);
-	_timer.restart();
+  _font.loadFromFile("/Library/Fonts/Comic Sans MS.ttf");
+  _title = sf::Text(str, _font);
+  _title.setColor(sf::Color::Green);
+  _title.setPosition(GetHorizontalCenter(_title).X,70.f);
+  _timer.restart();
 }
 
 void TextFade::Draw(sf::RenderWindow &w)
