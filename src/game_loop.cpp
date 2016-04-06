@@ -16,7 +16,6 @@ GameLoop::GameLoop(sf::RenderWindow &w)
 :event_handler("GSM"), _w(w), _quit(false), _cur_state(NULL)
 {
 	mediator::instance()->register_handler(this);
-	_font.loadFromFile("/Library/Fonts/Comic Sans MS.ttf");
 }
 
 void GameLoop::NewGame()

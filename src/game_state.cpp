@@ -24,13 +24,20 @@ void PlayableGameState::Draw(sf::RenderWindow &w)
 }
 
 
-MenuGameState::MenuGameState(const std::string &title):_index(0), _up(false),_down(false), initial_update(true)
+MenuGameState::MenuGameState(const std::string &title)
+	:_index(0), _up(false),_down(false), initial_update(true)
 {
-	if(!_font.loadFromFile("/Library/Fonts/Comic Sans MS.ttf"))
-		throw "couldn't load font";
-	_title = new sf::Text(title, _font);
-	
-	_title->setPosition(GetHorizontalCenter(*_title).X,70.f);
+	try
+	{
+ 		_font.loadFromFile("comic.ttf");
+		_title = new sf::Text(title, _font);
+
+		_title->setPosition(GetHorizontalCenter(*_title).X, 70.f);
+	}
+	catch (const std::exception &e)
+	{
+		std::cout << "error - " << e.what() << std::endl;
+	}
 }
 
 MenuGameState::~MenuGameState()

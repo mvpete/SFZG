@@ -5,7 +5,7 @@ Hud::Hud():event_handler("HUD"),_line(sf::Vector2f(500.f, 1.f))
 {
   mediator::instance()->register_handler(this);
 
-  _font.loadFromFile("/Library/Fonts/Comic Sans MS.ttf");
+  _font.loadFromFile("comic.ttf");
     // Create a text
   std::cout << "Loaded Font" << std::endl;
 
