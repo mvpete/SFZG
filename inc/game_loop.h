@@ -7,6 +7,7 @@
 
 #include <sstream>
 #include <iomanip>
+
 class FrameCounter
 {
 	float _frames, _total_time;

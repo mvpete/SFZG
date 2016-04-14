@@ -114,12 +114,23 @@ void mediator::remove_handler_by_id(const std::string &id)
 
 void mediator::send_event(const std::string &id, event *e)
 {
-	std::vector<event_handler*>::iterator i = std::find_if(_handlers.begin(), _handlers.end(), find_handler_by_id(id));
-	if (i == _handlers.end())
+	// Send the message to ERRBODY
+	if (id.compare("ERRBODY") == 0)
 	{
-		std::cout << "no handler named: " << id << std::endl;
-		return;
+		for (event_handler *h : _handlers)
+		{
+			apply_visitor(*h, *e);
+		}
 	}
+	else
+	{
+		std::vector<event_handler*>::iterator i = std::find_if(_handlers.begin(), _handlers.end(), find_handler_by_id(id));
+		if (i == _handlers.end())
+		{
+			std::cout << "no handler named: " << id << std::endl;
+			return;
+		}
 
-	apply_visitor(*(*i), *e);
+		apply_visitor(*(*i), *e);
+	}
 }

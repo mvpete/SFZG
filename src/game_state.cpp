@@ -47,8 +47,6 @@ MenuGameState::~MenuGameState()
 
 void MenuGameState::Update()
 {
-
-
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && !_up)
 	{
 		if (_index > 0)

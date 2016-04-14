@@ -15,7 +15,7 @@ class Enemy : public Collidable
 	AnimatedSprite sprite_;
 
 protected:
-	float _x, _y, _r;
+	sf::FloatRect bounds_;
 	int _health, _max_health;
 
 public:

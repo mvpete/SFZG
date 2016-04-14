@@ -27,6 +27,11 @@ void Vector::Normalize(Vector &vec)
     }
 }
 
+bool PointInRect(const Vector &pt, const sf::FloatRect &rect)
+{
+	return (rect.left <= pt.X && pt.X <= rect.left + rect.width) && (rect.top <= pt.Y && pt.Y <= rect.top + rect.height);
+}
+
 std::ostream & operator<<(std::ostream &os, Vector &v)
 {
 	os << "(" << v.X << ", " << v.Y << ")";

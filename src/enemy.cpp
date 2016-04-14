@@ -6,8 +6,8 @@
 #include <cmath>
 
 
-Enemy::Enemy(float x, float y, float r, int health)
-	: _x(x), _y(y), _r(r), _health(health), _max_health(health),
+Enemy::Enemy(float x, float y, float side, int health)
+	: bounds_(x,y,side,side), _health(health), _max_health(health),
 	sprite_("C:/workspace/playground/sfzg/res/img/BugSprites.png", sf::IntRect(55, 302, 30, 30), 90, sf::Vector2i(35, 0), 5, 5)
 {
 	std::cout << "new enemy " << this << std::endl;
@@ -33,18 +33,11 @@ void Enemy::Collide(Collidable *c)
 		return;
 
 	Vector v = c->Position();
-	/*def in_circle(center_x, center_y, radius, x, y):
-	  dist = math.sqrt((center_x - x) ** 2 + (center_y - y) ** 2)
-	  return dist <= radius*/
-	float center_x = _x + _r;
-	float center_y = _y + _r;
 
-	float dist = sqrt((center_x - v.X)*(center_x - v.X) + (center_y - v.Y)*(center_y - v.Y));
-	if (dist < _r)
+	if (PointInRect(v,bounds_))
 	{
 		c->Mark();
 		_health -= 15;
-
 	}
 }
 
@@ -59,7 +52,7 @@ bool Enemy::IsMarked()
 
 Vector Enemy::Position()
 {
-	return Vector(_x, _y);
+	return Vector(bounds_.left, bounds_.top);
 }
 
 void Enemy::Draw(sf::RenderWindow &w)
@@ -74,24 +67,24 @@ bool Enemy::IsAlive()
 
 void Enemy::SetPosition(Vector &v)
 {
-	_x = v.X;
-	_y = v.Y;
-	sprite_.SetPosition(v.X + 30, v.Y);
+	bounds_.left = v.X;
+	bounds_.top = v.Y;
+	sprite_.SetPosition(v.X + Width(), v.Y);
 }
 
 float Enemy::Width()
 {
-	return _r * 2;
+	return bounds_.width;
 }
 
 float Enemy::Height()
 {
-	return Width();
+	return bounds_.height;
 }
 
 sf::FloatRect Enemy::GetBounds()
 {
-	return sf::FloatRect(_x, _y, (2 * _r), (2 * _r));
+	return bounds_;
 }
 
 
@@ -111,7 +104,7 @@ void ArmedEnemy::Update()
 	if (_timer.getElapsedTime().asSeconds() > _rand_fire)
 	{
 		_timer.restart();
-		Vector v(_x + _r, _y + (3 * _r));
+		Vector v(bounds_.left+(bounds_.width/2), bounds_.top + bounds_.height);
 		std::cout << "Enemy firing" << std::endl;
 		_p.Fire(v, -1);
 	}

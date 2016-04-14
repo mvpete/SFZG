@@ -63,18 +63,15 @@ void Game::RemoveCollidable(Collidable *c)
 }
 
 void Game::Initialize()
-{
-
-  Hud *h = new Hud();	
+{ 
   Player *p1 = new Player();
+  Hud *h = new Hud(*p1);
   EnemyManager  *e  = new EnemyManager();
   std::cout << "Finished creating game components" << std::endl;
 
   RegisterComponent(p1);
   RegisterComponent(e);
   RegisterComponent(h);
-
-
 }
 
 

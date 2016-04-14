@@ -38,7 +38,6 @@ sf::FloatRect GetBounds(EnemyWave::EnemyList &enemies)
 			top.Y = lc.Y;
 		}
 		
-		
 		if( lc.X < top.X )
 			top.X = lc.X;
 			
@@ -58,7 +57,7 @@ sf::FloatRect GetBounds(EnemyWave::EnemyList &enemies)
 
 EnemyWave* EnemyWave::GenerateWave(int level)
 {
-	return new SquareWave(level  );
+	return new SquareWave(level);
 }
 
 bool EnemyWave::IsAlive()
@@ -129,7 +128,7 @@ SquareWave::SquareWave(int level)
   {
     for( int c(0); c < 10; ++c )
     {
-      _enemies.push_back(new ArmedEnemy(x,y,15.f, level*15));
+      _enemies.push_back(new ArmedEnemy(x,y,30.f, level*15));
       x+=35.f;
     }
     x = 0;

@@ -33,6 +33,8 @@ public:
 
 Vector GetHorizontalCenter(sf::Text &text);
 
+bool PointInRect(const Vector &pt, const sf::FloatRect &rect);
+
 std::ostream & operator<<(std::ostream &os, Vector &v);
 
 #endif // __UTIL_H__

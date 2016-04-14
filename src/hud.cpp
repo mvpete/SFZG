@@ -2,7 +2,10 @@
 #include <iostream>
 #include <sstream>
 
-Hud::Hud() :event_handler("HUD"), _line(sf::Vector2f(500.f, 1.f))
+#include "player.h"
+
+Hud::Hud(Player &p) 
+	:event_handler("HUD"), _line(sf::Vector2f(500.f, 1.f)), player_(p)
 {
 	mediator::instance()->register_handler(this);
 
@@ -26,7 +29,6 @@ Hud::Hud() :event_handler("HUD"), _line(sf::Vector2f(500.f, 1.f))
 	_line.setPosition(0, 20);
 
 	_score = 0;
-	_health = 0;
 
 	std::cout << "Finished creating" << std::endl;
 }
@@ -41,9 +43,6 @@ void Hud::on_event(adjustment_event &evt)
 {
 	switch (evt.type())
 	{
-	case adjustment_event::health:
-		evt.adjust(_health);
-		break;
 	case adjustment_event::score:
 		evt.adjust(_score);
 		break;
@@ -68,7 +67,7 @@ void Hud::Update()
 	_score_text.setString(ss.str());
 
 	ss.str("");
-	ss << "health: " << _health;
+	ss << "health: " << player_.GetHealth();
 	_health_text.setString(ss.str());
 
 }
