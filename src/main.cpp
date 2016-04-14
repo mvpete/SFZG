@@ -17,10 +17,10 @@
 sf::Font _global_font;
 int main()
 {
-	sf::RenderWindow window(sf::VideoMode(500, 500), "PFZG!");
+	sf::RenderWindow window(sf::VideoMode(500, 500), "Kinda Crappy Invaders!");
 
-	if (!_global_font.loadFromFile("/Library/Fonts/Comic Sans MS.ttf"))
-		throw "couldn't load font";
+	if (!_global_font.loadFromFile("comic.ttf"))
+		throw std::exception("couldn't load font");
 
 
 	GameLoop loop(window);

@@ -33,6 +33,7 @@ class GameLoop : public event_handler
 	sf::Font _font;
 public:
 	GameLoop(sf::RenderWindow &w);
+	~GameLoop();
 	void NewState(GameState *state);
 	void Run();
 	virtual void on_event(state_event &evt);

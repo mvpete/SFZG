@@ -11,9 +11,6 @@
 #define WIDTH 500
 #define HEIGHT 500
 
-
-
-
 class rnd
 {
 	static bool seeded;
@@ -37,4 +34,5 @@ public:
 Vector GetHorizontalCenter(sf::Text &text);
 
 std::ostream & operator<<(std::ostream &os, Vector &v);
-#endif
+
+#endif // __UTIL_H__

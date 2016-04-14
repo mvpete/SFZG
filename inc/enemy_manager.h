@@ -4,16 +4,18 @@
 #include "enemy.h"
 #include "game.h"
 #include "enemy_wave.h"
-
 #include "animation.h"
+
+#include <memory>
 
 class EnemyManager : public Component
 {
-  	sf::RectangleShape _end;
-  	EnemyWave *_wave;
-  	int level;
-	TextFade *_ani;
-	bool _play;
+  	sf::RectangleShape end_;
+  	std::unique_ptr<EnemyWave> wave_;
+  	int level_;
+	bool play_;
+
+	std::unique_ptr<TextFade> fade_;
 	
  public:
   EnemyManager();

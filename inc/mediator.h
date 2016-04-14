@@ -4,13 +4,15 @@
 #include <vector>
 #include <string>
 
+#include <memory>
+
 class event_handler;
 
 class event
 {
- public:
-  virtual ~event(){};
-  virtual void accept(event_handler &e)=0;
+public:
+	virtual ~event() {};
+	virtual void accept(event_handler &e) = 0;
 };
 
 class adjustment_event : public event
@@ -30,7 +32,7 @@ public:
 class health_event : public adjustment_event
 {
 public:
-	health_event(int modifier): adjustment_event(adjustment_event::health, modifier)
+	health_event(int modifier) : adjustment_event(adjustment_event::health, modifier)
 	{
 	}
 };
@@ -43,8 +45,8 @@ public:
 	virtual void accept(event_handler &e);
 	types type();
 private:
-	types _t;	
-	
+	types _t;
+
 };
 
 // this event is used to get values from an event_handler, stupid I know
@@ -64,30 +66,30 @@ public:
 
 class event_handler
 {
-  std::string _id;
- public:
-  event_handler(const std::string &id);
-  const std::string& id();
-  virtual ~event_handler(){};
-  
-  virtual void on_event(adjustment_event 	&evt	)  {} ;
-  virtual void on_event(state_event 		&evt	)  {};
-  virtual void on_event(payload_event 		&evt	)  {};
+	std::string _id;
+public:
+	event_handler(const std::string &id);
+	const std::string& id();
+	virtual ~event_handler() {};
+
+	virtual void on_event(adjustment_event 	&evt) {};
+	virtual void on_event(state_event 		&evt) {};
+	virtual void on_event(payload_event 		&evt) {};
 };
 
 void apply_visitor(event_handler &handler, event &e);
 
 class mediator
 {
-  static mediator *_this;
-  std::vector<event_handler *> _handlers;
- public:
- 	~mediator();
-  static mediator* instance();
-  void register_handler(event_handler *evt);
-  void remove_handler(event_handler *evt);
-  void remove_handler_by_id(const std::string &id);
-  void send_event(const std::string &id, event *e);
+	static std::unique_ptr<mediator> instance_;
+	std::vector<event_handler *> _handlers;
+public:
+	~mediator();
+	static mediator* instance();
+	void register_handler(event_handler *evt);
+	void remove_handler(event_handler *evt);
+	void remove_handler_by_id(const std::string &id);
+	void send_event(const std::string &id, event *e);
 };
 
 

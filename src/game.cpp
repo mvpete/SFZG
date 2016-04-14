@@ -81,11 +81,6 @@ void Game::Initialize()
 void Game::Update()
 {
   UpdateCollisions();
-  /*std::vector<Component*>::iterator i(_components.begin()), i_end(_components.end());
-  for ( ; i!=i_end; ++i)
-  {
-    (*i)->Update();
-  }*/
   
   for(int i(0); i<_components.size(); ++i)
   {
@@ -108,18 +103,6 @@ void Game::UpdateCollisions()
 
 void Game::Draw(sf::RenderWindow &w)
 {
-  /*	std::vector<Collidable*>::iterator i1(_collidables.begin()), i1_end(_collidables.end());
-	for(; i1!=i1_end; ++i1)
-	{
-		sf::FloatRect r = (*i1)->GetBounds();
-		sf::RectangleShape rs(sf::Vector2f(r.width, r.height));
-		rs.setPosition(r.left, r.top);
-		rs.setFillColor(sf::Color(255,255,255,0));
-		rs.setOutlineColor(sf::Color::Green);
-		rs.setOutlineThickness(1.0f);
-		w.draw(rs); 
-	}
-  */
   	std::vector<Component*>::iterator i(_components.begin()), i_end(_components.end());
   	for(; i!=i_end; ++i)
   	{

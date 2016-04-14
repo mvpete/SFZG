@@ -13,93 +13,120 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Game Components">
+      <UniqueIdentifier>{b8bf7a5e-7ec5-477e-a009-bbb8d0e9b904}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Graphic Utils">
+      <UniqueIdentifier>{fd7ee807-cf13-4a30-bc43-33e64fd2a16d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Game Utils">
+      <UniqueIdentifier>{39ebf5cb-46a4-4a3e-9644-731e285a4428}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Misc">
+      <UniqueIdentifier>{8f863b59-c5d1-44a5-aec0-1f483c093eba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game Components">
+      <UniqueIdentifier>{0eb3068a-f21a-4e5d-b342-87107c661fe0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphic Utils">
+      <UniqueIdentifier>{9420c60c-a634-434c-aa31-8085ea22c2bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game Utils">
+      <UniqueIdentifier>{b6e709e2-383c-4d6c-82b6-d9b07ea9d194}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="inc\animation.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="inc\enemy.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Game Components</Filter>
     </ClInclude>
     <ClInclude Include="inc\enemy_manager.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Game Components</Filter>
     </ClInclude>
     <ClInclude Include="inc\enemy_wave.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\game.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Game Components</Filter>
     </ClInclude>
     <ClInclude Include="inc\game_loop.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Game Components</Filter>
     </ClInclude>
     <ClInclude Include="inc\game_state.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Game Components</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\game.h">
+      <Filter>Header Files\Game Components</Filter>
     </ClInclude>
     <ClInclude Include="inc\hud.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Game Components</Filter>
     </ClInclude>
     <ClInclude Include="inc\items.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\mediator.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Game Components</Filter>
     </ClInclude>
     <ClInclude Include="inc\player.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Game Components</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\animation.h">
+      <Filter>Header Files\Graphic Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\mediator.h">
+      <Filter>Header Files\Game Utils</Filter>
     </ClInclude>
     <ClInclude Include="inc\resource_pool.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Game Utils</Filter>
     </ClInclude>
     <ClInclude Include="inc\unique_ptr.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Misc</Filter>
     </ClInclude>
     <ClInclude Include="inc\util.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Game Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\sprite.h">
+      <Filter>Header Files\Graphic Utils</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\animation.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\enemy.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\enemy_manager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\enemy_wave.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\game.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\game_loop.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\game_state.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\hud.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\laser.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\enemy.cpp">
+      <Filter>Source Files\Game Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\enemy_wave.cpp">
+      <Filter>Source Files\Game Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\enemy_manager.cpp">
+      <Filter>Source Files\Game Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game.cpp">
+      <Filter>Source Files\Game Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game_loop.cpp">
+      <Filter>Source Files\Game Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game_state.cpp">
+      <Filter>Source Files\Game Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hud.cpp">
+      <Filter>Source Files\Game Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\laser.cpp">
+      <Filter>Source Files\Game Components</Filter>
+    </ClCompile>
     <ClCompile Include="src\mediator.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Game Components</Filter>
     </ClCompile>
     <ClCompile Include="src\pistol.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Game Components</Filter>
     </ClCompile>
     <ClCompile Include="src\player.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Game Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\animation.cpp">
+      <Filter>Source Files\Graphic Utils</Filter>
     </ClCompile>
     <ClCompile Include="src\util.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Game Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sprite.cpp">
+      <Filter>Source Files\Graphic Utils</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

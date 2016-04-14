@@ -18,6 +18,11 @@ GameLoop::GameLoop(sf::RenderWindow &w)
 	mediator::instance()->register_handler(this);
 }
 
+GameLoop::~GameLoop()
+{
+	mediator::instance()->remove_handler(this);
+}
+
 void GameLoop::NewGame()
 {
 	fc.Reset();

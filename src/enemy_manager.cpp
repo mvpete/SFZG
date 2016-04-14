@@ -2,67 +2,61 @@
 #include "mediator.h"
 
 #include <iostream>
+#include <sstream>
 
 
 EnemyManager::EnemyManager()
-: _end(sf::Vector2f(500.f,1.f)), level(1), _play(false), _ani(NULL)
+: end_(sf::Vector2f(500.f,1.f)), level_(1), play_(false)
 {
-  _end.setPosition(0,430);
-  _wave = EnemyWave::GenerateWave(level);
+  end_.setPosition(0,430);
+  wave_.reset(EnemyWave::GenerateWave(level_));
   std::cout << "end enemy manager" << std::endl;
 }
 
 EnemyManager::~EnemyManager()
 {
-	delete _wave;
-	delete _ani;
 }
 
-#include <sstream>
+
 void EnemyManager::Update()
 { 
 	
-	if( !_play )
+	if( !play_ )
 	{
-		if( _ani == NULL )
+		if( fade_ == NULL )
 		{
 			Vector v;
 			std::stringstream ss;
-			ss << "Wave " << level;
-			_ani = new TextFade(v, ss.str(), 5.0f);	
+			ss << "Wave " << level_;
+			fade_.reset(new TextFade(v, ss.str(), 5.0f));
 		}
-		_ani->Update();
-		if( _ani->IsDone() )
+		fade_->Update();
+		if( fade_->IsDone() )
 		{
-			delete _ani;
-			_ani = NULL;
-			_play = true;
+			fade_.release();
+			play_ = true;
 		}
 	}
 	else
 	{
-		_wave->Update();
-  		if( !_wave->IsAlive() )
+		wave_->Update();
+  		if( !wave_->IsAlive() )
   		{
-  			delete _wave;
-  			_wave = EnemyWave::GenerateWave(++level);
-  			_play = false;
+  		
+  			wave_.reset(EnemyWave::GenerateWave(++level_));
+  			play_ = false;
   			return;
   		}
-  		Vector end(0.f,430.f);
-  		_wave->CheckWin(end);
-	}
-	
-	
-	
-	  	
+		Vector end(0, 430.f);
+  		wave_->CheckWin(end);
+	} 	
 }
 
 void EnemyManager::Draw(sf::RenderWindow &w)
 {
-	if( _play )
-  		_wave->Draw(w);
-  	if( _ani )
-  		_ani->Draw(w);
-  	w.draw(_end);
+	if( play_ )
+  		wave_->Draw(w);
+  	if( fade_ )
+  		fade_->Draw(w);
+  	w.draw(end_);
 }

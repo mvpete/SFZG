@@ -5,6 +5,7 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 
+#include "sprite.h"
 #include "items.h"
 #include "mediator.h"
 
@@ -14,7 +15,7 @@ class Player : public Component, public Collidable, public ItemConsumer, public 
 {
 
   float _x, _y;
-  sf::CircleShape _sprite;
+  Sprite sprite_;
   std::vector<Item *> _items;
   Item * _current_item;
   bool _activated;

@@ -1,12 +1,12 @@
 #ifndef __ANIMATION_H__
 #define __ANIMATION_H__
 
-#include "game.h"
-#include "util.h"
-
 #include <SFML/Graphics.hpp>
 #include <SFML/System/Clock.hpp>
 
+#include "game.h"
+
+class Vector;
 
 class TextFade : public Component
 {

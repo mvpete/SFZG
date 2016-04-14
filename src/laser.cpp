@@ -32,7 +32,7 @@ UniquePtr<Vector> Intersection(Vector &a1, Vector &a2, Vector &b1, Vector &b2)
  
 	// Return the point of intersection
 	std::cout << "Intersection @ point (" << x << " ," << y << ")" << std::endl;
-	return UniquePtr<Vector>(new Vector(x,y));;
+	return UniquePtr<Vector>(new Vector(x,y));
 }
 
 struct Line 
